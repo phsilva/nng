@@ -134,6 +134,11 @@ endif ()
 # reduces contention on the common locks used for aio expiration.
 # The default is to allocate up to max(8, ncpu).  The upper limit can be
 # overridden here.
+if (NNG_EXPIRE_THREADS)
+    add_definitions(-DNNG_EXPIRE_THREADS=${NNG_EXPIRE_THREADS})
+endif ()
+mark_as_advanced(NNG_EXPIRE_THREADS)
+
 set(NNG_MAX_EXPIRE_THREADS 8 CACHE STRING "Upper bound on expire threads, 0 for no limit")
 mark_as_advanced(NNG_MAX_EXPIRE_THREADS)
 if (NNG_MAX_EXPIRE_THREADS)
